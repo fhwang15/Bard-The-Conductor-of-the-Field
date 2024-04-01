@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
     bool musicPointB;
     bool musicPointC;
 
+    //Time of the AudioSource to other Scripts
+  
 
     //Timing for the notes
     public List<float> aKey = new List<float>();
@@ -31,6 +33,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         musicPointA = true;
         musicPointB = false;
         musicPointC = false;
@@ -40,51 +43,38 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(mainMusic.time);
+
 
         musicTime();
         
         if (Input.GetKeyDown(KeyCode.A))
         {
-            //add the timestamp into List A whenever I hit a key
-            PlayerPrefs.SetFloat("A Key", mainMusic.time);
+
+            Debug.Log("Akey: " + mainMusic.time);
 
         } else if (Input.GetKeyDown(KeyCode.S))
         {
-            //add the timestamp into List S whenever I hit s key
-            PlayerPrefs.SetFloat("S Key", mainMusic.time);
-            //sKey.Add(mainMusic.time);
+            Debug.Log("Skey: " + mainMusic.time);
 
         }
         else if (Input.GetKeyDown(KeyCode.D)) 
         {
-            //add the timestamp into List D whenever I hit d key
-            PlayerPrefs.SetFloat("D Key", mainMusic.time);
-            //dKey.Add(mainMusic.time);
+            Debug.Log("Dkey: " + mainMusic.time);
         }
         else if (Input.GetKeyDown(KeyCode.F))
         {
-            //add the timestamp into List F whenever I hit f key
-            PlayerPrefs.SetFloat("F Key", mainMusic.time);
-            //fKey.Add(mainMusic.time);
+            Debug.Log("Fkey: " + mainMusic.time);
+
         }
        else if (Input.GetKeyDown(KeyCode.Space))
        {
-            //add the timestamp into List space whenever I hit space key
-            PlayerPrefs.SetFloat("Space Key", mainMusic.time);
-
-            //spaceKey.Add(mainMusic.time);
+            Debug.Log("Space key: " + mainMusic.time);
 
         }
 
-
-
-
-
-        if(mainMusic.time >= 345f)
-        {
-            PlayerPrefs.Save();
-        }
+        
+            PlayerPrefs.DeleteAll();
+        
 
     }
 

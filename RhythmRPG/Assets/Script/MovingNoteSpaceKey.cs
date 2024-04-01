@@ -1,35 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class MovingNote : MonoBehaviour
+public class MovingNoteSpaceKey : MonoBehaviour
 {
-
     public float force;
 
-    bool target;
-
+    public static bool spacetarget;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = false;
+        spacetarget = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        force = Time.deltaTime*10;
-        transform.Translate(Vector3.left*force, Space.World);
+        force = Time.deltaTime * 10;
+        transform.Translate(Vector3.left * force, Space.World);
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.Space))
         {
-            if(target == true)
+            if (spacetarget == true)
             {
-                GameManager.score++;
+                GameManager.score = 0;
                 Destroy(gameObject);
-            } else if (target == false) 
+            }
+            else if (spacetarget == false)
             {
                 return;
             }
@@ -37,16 +36,15 @@ public class MovingNote : MonoBehaviour
 
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "PreparedNote")
         {
-            target = true;
+            spacetarget = true;
         }
         else
         {
-            target = false;
+            spacetarget = false;
         }
     }
 }
