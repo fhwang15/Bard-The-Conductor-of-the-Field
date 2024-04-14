@@ -29,7 +29,7 @@ public class MovingNoteSpaceKey : MonoBehaviour
     {
         SummonNotes();
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (spacetarget == true)
             {

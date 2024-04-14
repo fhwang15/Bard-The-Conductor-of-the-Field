@@ -5,71 +5,45 @@ using static UnityEngine.GraphicsBuffer;
 
 public class MovingNoteAkey : MonoBehaviour
 {
-
+    //List of timings
     public List<float> aKey = new List<float>();
+
+    //Location where the notes will be instantiated
     public Transform location;
+
+    //Audio source
     public AudioSource timingAudio;
 
+    //Note Prefab
     public GameObject note;
-
-    public float force;
-
-    bool target;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        //Summon the notes
         SummonNotes();
-
-        Debug.Log((float)System.Math.Round(timingAudio.time, 2));
         
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (target == true)
-            {
-                GameManager.score++;
-                Destroy(gameObject);
-            }
-            else if (target == false)
-            {
-                return;
-            }
-        }
-
     }
 
-    void SummonNotes()
+    void SummonNotes() //Will summon the note at the given time.
     {
-        //float tEditor = 1.6f;
         float timing = (float)System.Math.Round(timingAudio.time, 2);
+        //Converts the timing into a float value to the hundredths
 
 
         foreach (float akeytiming in aKey)
         {
-            if (timing - 2.4f == akeytiming - 2.4f)
+            if (timing - 2.4f == akeytiming - 2.4f) //Timing adjustment
             {
-                Instantiate(note, location);
+                Instantiate(note, location); //Instantiates the music note
             }
-        }
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "PreparedNote")
-        {
-            target = true;
-        }
-        else
-        {
-            target = false;
         }
     }
 }

@@ -7,67 +7,46 @@ using static UnityEditor.FilePathAttribute;
 public class MovingNoteDKey : MonoBehaviour
 {
 
-
+    //List of timings
     public List<float> dKey = new List<float>();
+
+    //Location where the notes will be instantiated
     public Transform location;
+
+    //Audio source
     public AudioSource timingAudio;
 
+    //Note Prefab
     public GameObject note;
-
-    public float force;
-
-    bool target;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        SummonNotes();
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            if (target == true)
-            {
-                GameManager.score++;
-                Destroy(gameObject);
-            }
-            else if (target == false)
-            {
-                return;
-            }
-        }
+       
+        SummonNotes(); //Summon the notes
 
     }
 
-    void SummonNotes()
+    void SummonNotes() //Will summon the note at the given time.
     {
+
+        //Converts the timing into a float value to the hundredths
         float timing = (float)System.Math.Round(timingAudio.time, 2);
+
 
         foreach (float dkeytiming in dKey)
         {
-            if (timing - 2.4f == dkeytiming - 2.4f)
+            if (timing - 2.4f == dkeytiming - 2.4f) //Timing adjustment
             {
-                Instantiate(note, location);
+                Instantiate(note, location); //Instantiates the music note
             }
         }
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "PreparedNote")
-        {
-            target = true;
-        }
-        else
-        {
-            target = false;
-        }
-    }
 }
