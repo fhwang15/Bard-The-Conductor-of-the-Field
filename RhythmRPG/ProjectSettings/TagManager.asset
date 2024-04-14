@@ -7,6 +7,10 @@ TagManager:
   - PreparedNote
   - MovingNote
   - Destroyer
+  - AMovingNote
+  - SMovingNote
+  - DMovingNote
+  - FMovingNote
   layers:
   - Default
   - TransparentFX

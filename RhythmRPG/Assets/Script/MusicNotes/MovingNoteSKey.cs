@@ -29,6 +29,10 @@ public class MovingNoteSKey : MonoBehaviour
     {
         //Summon the notes
         SummonNotes();
+
+
+
+
     }
 
     void SummonNotes() //Will summon the note at the given time.

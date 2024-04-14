@@ -8,13 +8,19 @@ public class MovingNote : MonoBehaviour
 
     public float force;
 
-    bool target;
+    bool Atarget;
+    bool Starget;
+    bool Dtarget;
+    bool Ftarget;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        target = false;
+        Atarget = false;
+        Starget = false;
+        Dtarget = false;
+        Ftarget = false;
     }
 
     // Update is called once per frame
@@ -24,44 +30,50 @@ public class MovingNote : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if(target == true)
+            if (Atarget == true)
             {
                 GameManager.score++;
+                Atarget = false;
                 Destroy(gameObject);
-            } else if (target == false) 
+            }
+            else if (Atarget == false)
             {
                 return;
             }
-        } else if (Input.GetKeyDown(KeyCode.S)) {
+        }
+        else if (Input.GetKeyDown(KeyCode.S)) {
 
-            if (target == true)
+            if (Starget == true)
             {
                 GameManager.score++;
+                Starget = false;
                 Destroy(gameObject);
             }
-            else if (target == false)
+            else if (Starget == false)
             {
                 return;
             }
         } else if (Input.GetKeyDown (KeyCode.D))
         {
-            if (target == true)
+            if (Dtarget == true)
             {
                 GameManager.score++;
+                Dtarget = false;
                 Destroy(gameObject);
             }
-            else if (target == false)
+            else if (Dtarget == false)
             {
                 return;
             }
         } else if(Input.GetKeyDown (KeyCode.F)) {
             
-            if (target == true)
+            if (Ftarget == true)
             {
                 GameManager.score++;
+                Ftarget = false;
                 Destroy(gameObject);
             }
-            else if (target == false)
+            else if (Ftarget == false)
             {
                 return;
             }
@@ -80,13 +92,25 @@ public class MovingNote : MonoBehaviour
     {
 
         //Determines whether the note is in the "note hitting box" area. Allows the player to 
-        if (collision.gameObject.tag == "PreparedNote")
+        if (collision.gameObject.tag == "AMovingNote")
         {
-            target = true;
-        } 
+            Atarget = true;
+        }  else if (collision.gameObject.tag == "SMovingNote")
+        {
+            Starget = true;
+        } else if (collision.gameObject.tag == "DMovingNote")
+        {
+            Dtarget = true;
+        } else if (collision.gameObject.tag == "FMovingNote")
+        {
+            Ftarget = true;
+        }
         else
         {
-            target = false;
+            Atarget = false;
+            Starget = false;
+            Dtarget = false;
+            Ftarget = false;
         }
     }
 
@@ -95,7 +119,10 @@ public class MovingNote : MonoBehaviour
         //If the note hits the hitbox at the end of the screen, the note will disappear
         if (collision.gameObject.tag == "Destroyer") 
         {
-            target = false;
+            Atarget = false;
+            Starget = false;
+            Dtarget = false;
+            Ftarget = false;
             Destroy(gameObject);
         }
     }

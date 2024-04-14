@@ -17,10 +17,13 @@ public class MovingNoteAkey : MonoBehaviour
     //Note Prefab
     public GameObject note;
 
+   // bool target;
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        //target = false;
     }
 
     // Update is called once per frame
@@ -29,7 +32,6 @@ public class MovingNoteAkey : MonoBehaviour
 
         //Summon the notes
         SummonNotes();
-        
     }
 
     void SummonNotes() //Will summon the note at the given time.
