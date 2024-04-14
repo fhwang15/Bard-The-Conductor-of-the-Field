@@ -34,12 +34,23 @@ public class MovingNoteSpaceKey : MonoBehaviour
     {
         float timing = (float)System.Math.Round(timingAudio.time, 2);
 
-        foreach (float spacekeytiming in spaceKey)
+        for (int i = spaceKey.Count - 1; i >= 0; i--)
         {
-            if (timing - 2.8f == spacekeytiming - 2.8f)
+            float spacekeytiming = spaceKey[i];
+            if (timing - 2.4f >= spacekeytiming - 2.4f)
             {
-                Instantiate(note, location);
+                Instantiate(note, location); //Instantiates the music note
+                spaceKey.RemoveAt(i);
             }
         }
+
+
+        //foreach (float spacekeytiming in spaceKey)
+        //{
+            //if (timing - 2.8f == spacekeytiming - 2.8f)
+            //{
+                //Instantiate(note, location);
+            //}
+        //}
     }
 }

@@ -42,12 +42,23 @@ public class MovingNoteSKey : MonoBehaviour
         //Converts the timing into a float value to the hundredths
 
 
-        foreach (float skeytiming in sKey)
+        for (int i = sKey.Count - 1; i >= 0; i--)
         {
-            if (timing - 2.4f == skeytiming - 2.4f) //Timing adjustment
+            float skeytiming = sKey[i];
+            if (timing - 2.4f >= skeytiming - 2.4f)
             {
                 Instantiate(note, location); //Instantiates the music note
+                sKey.RemoveAt(i);
             }
         }
+
+
+        //foreach (float skeytiming in sKey)
+        //{
+        //if (timing - 2.4f == skeytiming - 2.4f) //Timing adjustment
+        //{
+        //Instantiate(note, location); //Instantiates the music note
+        //}
+        //}
     }
 }

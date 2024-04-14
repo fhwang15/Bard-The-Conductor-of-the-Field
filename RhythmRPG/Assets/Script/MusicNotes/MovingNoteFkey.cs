@@ -33,13 +33,23 @@ public class MovingNoteFkey : MonoBehaviour
     {
         float timing = (float)System.Math.Round(timingAudio.time, 2);  //Converts the timing into a float value to the hundredths
 
-
-        foreach (float fkeytiming in fKey)
+        for (int i = fKey.Count - 1; i >= 0; i--)
         {
-            if (timing - 2.4f == fkeytiming - 2.4f) //Timing adjustment
+            float fkeytiming = fKey[i];
+            if (timing - 2.4f >= fkeytiming - 2.4f)
             {
                 Instantiate(note, location); //Instantiates the music note
+                fKey.RemoveAt(i);
             }
         }
+
+
+        //foreach (float fkeytiming in fKey)
+        //{
+            //if (timing - 2.4f == fkeytiming - 2.4f) //Timing adjustment
+            //{
+                //Instantiate(note, location); //Instantiates the music note
+            //}
+        //}
     }
 }

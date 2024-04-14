@@ -105,20 +105,27 @@ public class MovingNote : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        //Determines whether the note is in the "note hitting box" area. Allows the player to 
+        //Determines whether the note is in the "note hitting box" area. Allows the player to get score.
         if (collision.gameObject.tag == "AMovingNote")
         {
             Atarget = true;
-        }  else if (collision.gameObject.tag == "SMovingNote")
+        }  
+        
+        else if (collision.gameObject.tag == "SMovingNote")
         {
             Starget = true;
-        } else if (collision.gameObject.tag == "DMovingNote")
+        } 
+        
+        else if (collision.gameObject.tag == "DMovingNote")
         {
             Dtarget = true;
-        } else if (collision.gameObject.tag == "FMovingNote")
+        } 
+        
+        else if (collision.gameObject.tag == "FMovingNote")
         {
             Ftarget = true;
         }
+        
         else
         {
             Atarget = false;
