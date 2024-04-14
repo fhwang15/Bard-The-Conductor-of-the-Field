@@ -13,24 +13,35 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 4;
+        GameManager.attack = false;
+        health = 300;
         replay.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthstatus.text = health.ToString();
-        
-        if (Input.GetKeyDown(KeyCode.Space) && MovingNoteSpaceKey.spacetarget==true)
+
+        if(GameManager.attack == true) 
         {
             health = health - GameManager.score;
+            GameManager.score = 0;
+            GameManager.attack = false;
         }
 
+        healthstatus.text = health.ToString();
 
-        if(health == 0)
+        EndofGame();
+
+    }
+
+    void EndofGame()
+    {
+        if (health == 0)
         {
             replay.SetActive(true);
         }
     }
+
+
 }

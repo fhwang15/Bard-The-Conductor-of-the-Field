@@ -28,12 +28,14 @@ public class MovingNote : MonoBehaviour
     {
         noteMovement();
 
+
+        //KeyPressed
         if (Input.GetKeyDown(KeyCode.A))
         {
             if (Atarget == true)
             {
-                GameManager.score++;
                 Atarget = false;
+                GameManager.score = GameManager.score + 1;
                 Destroy(gameObject);
             }
             else if (Atarget == false)
@@ -45,8 +47,8 @@ public class MovingNote : MonoBehaviour
 
             if (Starget == true)
             {
-                GameManager.score++;
                 Starget = false;
+                GameManager.score++;
                 Destroy(gameObject);
             }
             else if (Starget == false)
@@ -57,8 +59,8 @@ public class MovingNote : MonoBehaviour
         {
             if (Dtarget == true)
             {
-                GameManager.score++;
                 Dtarget = false;
+                GameManager.score++;
                 Destroy(gameObject);
             }
             else if (Dtarget == false)
@@ -69,8 +71,8 @@ public class MovingNote : MonoBehaviour
             
             if (Ftarget == true)
             {
-                GameManager.score++;
                 Ftarget = false;
+                GameManager.score++;
                 Destroy(gameObject);
             }
             else if (Ftarget == false)
@@ -78,6 +80,18 @@ public class MovingNote : MonoBehaviour
                 return;
             }
         }
+
+        if(Input.GetKeyDown (KeyCode.Space))
+        {
+            if(Atarget == true)
+            {
+                GameManager.attack = true;
+            } else
+            {
+                return;
+            }
+        }
+
 
     }
 
