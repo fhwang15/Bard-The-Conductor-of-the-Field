@@ -28,25 +28,10 @@ public class MovingNoteSpaceKey : MonoBehaviour
     void Update()
     {
         SummonNotes();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (spacetarget == true)
-            {
-                GameManager.score = 0;
-                Destroy(gameObject);
-            }
-            else if (spacetarget == false)
-            {
-                return;
-            }
-        }
-
     }
 
     void SummonNotes()
     {
-
         float timing = (float)System.Math.Round(timingAudio.time, 2);
 
         foreach (float spacekeytiming in spaceKey)
@@ -55,19 +40,6 @@ public class MovingNoteSpaceKey : MonoBehaviour
             {
                 Instantiate(note, location);
             }
-        }
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "PreparedNote")
-        {
-            spacetarget = true;
-        }
-        else
-        {
-            spacetarget = false;
         }
     }
 }
