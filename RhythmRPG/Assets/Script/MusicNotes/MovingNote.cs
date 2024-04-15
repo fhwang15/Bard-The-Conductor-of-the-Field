@@ -8,7 +8,7 @@ public class MovingNote : MonoBehaviour
 
     public float force;
 
-    public HitBox hitBox;
+    //public HitBox hitBox;
 
     bool Atarget;
     bool Starget;
@@ -34,72 +34,92 @@ public class MovingNote : MonoBehaviour
         //KeyPressed
         if (Input.GetKeyDown(KeyCode.A))
         {
+
             if (Atarget == true)
             {
+                ActionGauge.AttackPoint++;
                 Atarget = false;
-                for (int i = 0; i < hitBox.hitLevel.Length; i++)
-                {
-                    if (hitBox.hitLevel[i] == true)
-                    {
-                        HitBox.totalHit[i]++;
-                    }
-                }
                 Destroy(gameObject);
             }
+            //{
+
+
+            //    for (int i = 0; i < hitBox.hitLevel.Length; i++)
+            //    {
+            //        if (hitBox.hitLevel[i] == true)
+            //        {
+            //            HitBox.totalHit[i]++;
+            //        }
+            //    }
+            //    Atarget = false;
+            //    Destroy(gameObject);
+            //}
             else if (Atarget == false)
             {
                 return;
             }
-        }
+
+        } 
+    
+
+
         else if (Input.GetKeyDown(KeyCode.S)) {
 
             if (Starget == true)
             {
 
                 Starget = false;
-                for (int i = 0; i < hitBox.hitLevel.Length; i++)
-                {
-                    if (hitBox.hitLevel[i] == true)
-                    {
-                        HitBox.totalHit[i]++;
-                    }
-                }
+                //for (int i = 0; i < hitBox.hitLevel.Length; i++)
+                //{
+                //    if (hitBox.hitLevel[i] == true)
+                //    {
+                //        HitBox.totalHit[i]++;
+                //    }
+                //}
+                ActionGauge.AttackPoint++;
                 Destroy(gameObject);
             }
             else if (Starget == false)
             {
                 return;
             }
-        } else if (Input.GetKeyDown (KeyCode.D))
+        } 
+        
+        else if (Input.GetKeyDown (KeyCode.D))
         {
             if (Dtarget == true)
             {
                 Dtarget = false;
-                for (int i = 0; i < hitBox.hitLevel.Length; i++)
-                {
-                    if (hitBox.hitLevel[i] == true)
-                    {
-                        HitBox.totalHit[i]++;
-                    }
-                }
+                //for (int i = 0; i < hitBox.hitLevel.Length; i++)
+                //{
+                //    if (hitBox.hitLevel[i] == true)
+                //    {
+                //        HitBox.totalHit[i]++;
+                //    }
+                //}
+                ActionGauge.AttackPoint++;
                 Destroy(gameObject);
             }
             else if (Dtarget == false)
             {
                 return;
             }
-        } else if(Input.GetKeyDown (KeyCode.F)) {
+        } 
+        
+        else if(Input.GetKeyDown (KeyCode.F)) {
             
             if (Ftarget == true)
             {
                 Ftarget = false;
-                for (int i = 0; i < hitBox.hitLevel.Length; i++)
-                {
-                    if (hitBox.hitLevel[i] == true)
-                    {
-                        HitBox.totalHit[i]++;
-                    }
-                }
+                //for (int i = 0; i < hitBox.hitLevel.Length; i++)
+                //{
+                //    if (hitBox.hitLevel[i] == true)
+                //    {
+                //        HitBox.totalHit[i]++;
+                //    }
+                //}
+
+                ActionGauge.AttackPoint++;
                 Destroy(gameObject);
             }
             else if (Ftarget == false)
@@ -112,11 +132,11 @@ public class MovingNote : MonoBehaviour
         {
             if(Atarget == true)
             {
-                GameManager.attack = true;
+                ActionGauge.attack = true;
                 Destroy(gameObject);
             } else
             {
-                return;
+                ActionGauge.AttackPoint = 0;
             }
         }
 

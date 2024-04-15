@@ -7,14 +7,14 @@ public class Enemy : MonoBehaviour
 {
     public TextMeshProUGUI healthstatus;
     
-    public float health; // Health of the enemy (The condition to win)
+    public static float health; // Health of the enemy (The condition to win)
 
     public GameObject replay; //will be used later
 
     // Start is called before the first frame update
     void Start()
     {
-        health = 300;
+        health = 90;
         //replay.SetActive(false); 
     }
 
@@ -22,11 +22,17 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        if(GameManager.attack == true) //MovingNote (84, 93). Will be determined whether space key was pressed on the right timing or not.
+        if(ActionGauge.attack == true) //MovingNote (84, 93). Will be determined whether space key was pressed on the right timing or not.
         {
-            health = health - GameManager.score; //Decrease of the enemy's health.
-            GameManager.score = 0; //The player character's Action Gauge will reset
-            GameManager.attack = false; //Player will not attack again until the next space bar note appears.
+            health = health - ActionGauge.AttackPoint; //Decrease of the enemy's health.
+            ActionGauge.AttackPoint = 0; //The player character's Action Gauge will reset
+
+            //for(int i = 0; i < HitBox.totalHit.Length; i++)
+            //{
+            //    HitBox.totalHit[i] = 0;
+            //}
+
+            ActionGauge.attack = false; //Player will not attack again until the next space bar note appears.
         }
 
         healthstatus.text = health.ToString(); 

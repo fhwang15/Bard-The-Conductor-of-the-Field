@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
@@ -20,15 +21,7 @@ public class AudioManager : MonoBehaviour
     bool musicPointB;
     bool musicPointC;
 
-    //Time of the AudioSource to other Scripts
   
-
-    //Timing for the notes
-    public List<float> aKey = new List<float>();
-    public List<float> sKey = new List<float>();
-    public List<float> dKey = new List<float>();
-    public List<float> fKey = new List<float>();
-    public List<float> spaceKey = new List<float>();
 
     // Start is called before the first frame update
     void Start()
@@ -43,39 +36,15 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         musicTime();
-        
-        if (Input.GetKeyDown(KeyCode.A))
+
+        if(mainMusic.isPlaying == true)
         {
-
-            Debug.Log("Akey: " + mainMusic.time);
-
-        } else if (Input.GetKeyDown(KeyCode.S))
+            return;
+        } else if(mainMusic.isPlaying == false)
         {
-            Debug.Log("Skey: " + mainMusic.time);
-
+            SceneManager.LoadScene(2);
         }
-        else if (Input.GetKeyDown(KeyCode.D)) 
-        {
-            Debug.Log("Dkey: " + mainMusic.time);
-        }
-        else if (Input.GetKeyDown(KeyCode.F))
-        {
-            Debug.Log("Fkey: " + mainMusic.time);
-
-        }
-       else if (Input.GetKeyDown(KeyCode.Space))
-       {
-            Debug.Log("Space key: " + mainMusic.time);
-
-        }
-
-        
-            PlayerPrefs.DeleteAll();
-        
-
     }
 
     // Instead of thinking of collision or Raycast whatever, using difference from the actual timestamp.

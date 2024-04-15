@@ -6,13 +6,13 @@ using UnityEngine.Rendering;
 public class HitBox : MonoBehaviour
 {
 
+    //For the Result
     public static int harmonic;
     public static int great;
     public static int good;
     public static int plink;
     public static int miss;
 
-    float hitdistance;
     public Transform hitrange;
 
 
@@ -33,6 +33,7 @@ public class HitBox : MonoBehaviour
     void Update()
     {
         hitLocation();
+        hitPointCalc();
 
     }
 
@@ -48,4 +49,38 @@ public class HitBox : MonoBehaviour
         hitLevel[0] = dist <= 0.28f ? true : false;
 
     }            
+
+
+    void hitPointCalc()
+    {
+        for (int i = 0; i < totalHit.Length; i++)
+        {
+            if (totalHit[i] > 0)
+            {
+                if(i == 0)
+                {
+                    harmonic += totalHit[i];
+                } else if (i == 1)
+                {
+                    great += totalHit[i];
+                }
+                else if (i == 2)
+                {
+                    good += totalHit[i];
+                }
+                else if (i == 3)
+                {
+                    plink += totalHit[i];
+                }
+                else if (i == 4)
+                {
+                    miss += totalHit[i];
+                }
+            } else
+            {
+                return;
+            }
+        }
+
+    }
 }
