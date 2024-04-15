@@ -11,6 +11,10 @@ TagManager:
   - SMovingNote
   - DMovingNote
   - FMovingNote
+  - Harmonic
+  - Great
+  - Good
+  - Plink
   layers:
   - Default
   - TransparentFX
