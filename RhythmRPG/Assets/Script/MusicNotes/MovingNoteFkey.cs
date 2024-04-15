@@ -42,14 +42,5 @@ public class MovingNoteFkey : MonoBehaviour
                 fKey.RemoveAt(i);
             }
         }
-
-
-        //foreach (float fkeytiming in fKey)
-        //{
-            //if (timing - 2.4f == fkeytiming - 2.4f) //Timing adjustment
-            //{
-                //Instantiate(note, location); //Instantiates the music note
-            //}
-        //}
     }
 }

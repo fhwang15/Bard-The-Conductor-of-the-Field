@@ -49,15 +49,6 @@ public class MovingNoteDKey : MonoBehaviour
             }
         }
 
-
-
-        //foreach (float dkeytiming in dKey)
-        //{
-            //if (timing - 2.4f == dkeytiming - 2.4f) //Timing adjustment
-            //{
-                //Instantiate(note, location); //Instantiates the music note
-            //}
-        //}
     }
 
 }

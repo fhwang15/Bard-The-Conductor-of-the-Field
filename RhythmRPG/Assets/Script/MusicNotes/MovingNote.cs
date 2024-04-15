@@ -8,6 +8,8 @@ public class MovingNote : MonoBehaviour
 
     public float force;
 
+    public HitBox hitBox;
+
     bool Atarget;
     bool Starget;
     bool Dtarget;
@@ -35,7 +37,13 @@ public class MovingNote : MonoBehaviour
             if (Atarget == true)
             {
                 Atarget = false;
-                GameManager.score = GameManager.score + 1;
+                for (int i = 0; i < hitBox.hitLevel.Length; i++)
+                {
+                    if (hitBox.hitLevel[i] == true)
+                    {
+                        HitBox.totalHit[i]++;
+                    }
+                }
                 Destroy(gameObject);
             }
             else if (Atarget == false)
@@ -47,8 +55,15 @@ public class MovingNote : MonoBehaviour
 
             if (Starget == true)
             {
+
                 Starget = false;
-                GameManager.score++;
+                for (int i = 0; i < hitBox.hitLevel.Length; i++)
+                {
+                    if (hitBox.hitLevel[i] == true)
+                    {
+                        HitBox.totalHit[i]++;
+                    }
+                }
                 Destroy(gameObject);
             }
             else if (Starget == false)
@@ -60,7 +75,13 @@ public class MovingNote : MonoBehaviour
             if (Dtarget == true)
             {
                 Dtarget = false;
-                GameManager.score++;
+                for (int i = 0; i < hitBox.hitLevel.Length; i++)
+                {
+                    if (hitBox.hitLevel[i] == true)
+                    {
+                        HitBox.totalHit[i]++;
+                    }
+                }
                 Destroy(gameObject);
             }
             else if (Dtarget == false)
@@ -72,7 +93,13 @@ public class MovingNote : MonoBehaviour
             if (Ftarget == true)
             {
                 Ftarget = false;
-                GameManager.score++;
+                for (int i = 0; i < hitBox.hitLevel.Length; i++)
+                {
+                    if (hitBox.hitLevel[i] == true)
+                    {
+                        HitBox.totalHit[i]++;
+                    }
+                }
                 Destroy(gameObject);
             }
             else if (Ftarget == false)
@@ -86,6 +113,7 @@ public class MovingNote : MonoBehaviour
             if(Atarget == true)
             {
                 GameManager.attack = true;
+                Destroy(gameObject);
             } else
             {
                 return;

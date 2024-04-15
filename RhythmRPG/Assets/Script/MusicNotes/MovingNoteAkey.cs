@@ -49,12 +49,5 @@ public class MovingNoteAkey : MonoBehaviour
             }
         }
         
-        //foreach (float akeytiming in aKey)
-        //{
-            //if (timing - 2.4f == akeytiming - 2.4f) //Timing adjustment
-            //{
-              //  Instantiate(note, location); //Instantiates the music note
-            //}
-        //}
     }
 }

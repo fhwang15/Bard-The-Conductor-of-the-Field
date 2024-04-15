@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static int score;
     public static bool attack;
 
+    
+
 
     public TextMeshProUGUI Powerstatus;
 

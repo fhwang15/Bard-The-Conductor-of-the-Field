@@ -51,14 +51,5 @@ public class MovingNoteSKey : MonoBehaviour
                 sKey.RemoveAt(i);
             }
         }
-
-
-        //foreach (float skeytiming in sKey)
-        //{
-        //if (timing - 2.4f == skeytiming - 2.4f) //Timing adjustment
-        //{
-        //Instantiate(note, location); //Instantiates the music note
-        //}
-        //}
     }
 }
